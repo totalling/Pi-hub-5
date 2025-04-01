@@ -119,10 +119,8 @@ def spotify_current_track():
     try:
         current = sp.current_playback()
         if not current or not current.get('item'):
-            # Try to check if a track was recently played
             recent = sp.current_user_recently_played(limit=1)
             if recent and recent.get('items') and len(recent['items']) > 0:
-                # Return the most recently played track but mark as not playing
                 track = recent['items'][0]['track']
                 artists = ", ".join([artist['name'] for artist in track['artists']])
                 
@@ -224,12 +222,12 @@ def get_system_info():
     cpu_percent = psutil.cpu_percent(interval=0.1)
     
     memory = psutil.virtual_memory()
-    memory_used = round(memory.used / (1024 * 1024 * 1024), 1)  # GB
-    memory_total = round(memory.total / (1024 * 1024 * 1024), 1)  # GB
+    memory_used = round(memory.used / (1024 * 1024 * 1024), 1)
+    memory_total = round(memory.total / (1024 * 1024 * 1024), 1) 
     
     disk = shutil.disk_usage('/')
-    disk_used = round(disk.used / (1024 * 1024 * 1024), 1)  # GB
-    disk_total = round(disk.total / (1024 * 1024 * 1024), 1)  # GB
+    disk_used = round(disk.used / (1024 * 1024 * 1024), 1)
+    disk_total = round(disk.total / (1024 * 1024 * 1024), 1)
     
     cpu_temp = get_cpu_temperature()
     
