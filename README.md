@@ -37,3 +37,10 @@ A sleek, Spotify-inspired dashboard for Raspberry Pi with 1024x600 displays. Mon
 - Python 3.6+
 - Spotify Premium account
 - Spotify Developer API credentials
+
+## Limiting recent tracks
+- To limit recent tracks you can edit these lines for better viewing
+         `if (trackHistory.length > 6) {
+                    trackHistory = trackHistory.slice(0, 6);
+                }
+            }`
